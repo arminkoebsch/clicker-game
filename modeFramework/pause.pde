@@ -13,4 +13,10 @@ void keyReleased() {
       mode = game;
     }
   }
+  
+  if (key == 'n'){
+    bx = dx;
+    by = dy;
+    ba = da;
+  }
 }

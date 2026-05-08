@@ -22,42 +22,85 @@ void game() {
   if (y < 0 + d/2 || y > height - d/2) {
     vy = vy * -1;
   }
-  
+
+
+  stroke(255, 0, 0);
+  circle(bx, by, 20);//bullet
+
   //drone
   pushMatrix();
   rectMode(CENTER);
   translate(dx, dy);
   rotate(radians(da));
+  stroke(0);
   fill(255);
-  rect(50, 0, 100, 100);
-  fill(0);
-  rect(-50, 0, 100, 100);
-  
+  rect(20, 0, 100, 20);
+  ellipse(0, 0, 100, 70);
+  fill(255, 0, 0);
+  circle(30, 10, 15);
+  circle(30, -10, 15);
+  fill(150);
+  circle(30, 40, 40);
+  circle(30, -40, 40);
+  circle(-30, -40, 40);
+  circle(-30, 40, 40);
+
   popMatrix();
-  
-  if (keyPressed == true){
-    if (key == 'w'){
+
+  if (keyPressed == true) {//drone mouvement
+    if (key == 'w') {
       da = 270;
       dy = dy - vdy;
     }
-    if (key == 'a'){
+    if (key == 'a') {
       da = 180;
       dx = dx - vdx;
     }
-    if (key == 's'){
+    if (key == 's') {
       da = 90;
       dy = dy + vdy;
     }
-    if (key == 'd'){
+    if (key == 'd') {
       da = 0;
       dx = dx + vdx;
     }
   }
+
+
+  if (ba == 0) {//bullet movement
+    bx = bx + vb;
+  }
+  if (ba == 180) {
+    bx = bx - vb;
+  }
+  if (ba == 90) {
+    by = by + vb;
+  }
+  if (ba == 270) {
+    by = by - vb;
+  }
+
   
+
+  if (dist(x, y, bx, by) < d/2 + 10) {//bullet collision
+    score = score + 1;
+    bx = 2000;
+    by = 2000;
+  }
+
+  if (dist(x, y, dx, dy) < d/2 + 50) {//drone collision
+    lives = lives - 1;
+    x =  500;
+    y = 100;
+    vx = random(-5, 5);
+    vy = random(-5, 5);
+  }
   
-  
-  
+  if (lives == 0){
+    mode = gameover;
+  }
 }
+
 
 void gameClicks() {
   if (dist(mouseX, mouseY, x, y) < d/2) {
