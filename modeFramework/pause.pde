@@ -1,5 +1,6 @@
 void pause() {
-  
+  //fill(255, 10);
+  //rect(500, 500, 1000, 1000);
 }
 
 void pauseClicks() {

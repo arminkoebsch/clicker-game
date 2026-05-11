@@ -9,10 +9,11 @@ void intro(){
   background(0, 0, 255);
   strokeWeight(10);
   
-
+  fill(0, 255, 0);
   tactile(500, 500);
   text("PLAY", 500, 500);
   
+  fill(#FFF700);
   tactile(500, 700);
   text("options", 500, 700);
 }

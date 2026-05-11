@@ -1,5 +1,7 @@
 void game() {
   background(0, 255, 0);
+  
+  //image(city, 500, 500);
 
   stroke(0);
   textSize(50);
@@ -12,8 +14,8 @@ void game() {
   circle(x, y, d);
 
   //moving
-  x = x + vx;
-  y = y + vy;
+  x = x + vx *score/2;
+  y = y + vy *score/2;
 
   //bouncing
   if (x < 0 + d/2 || x > width - d/2) {
@@ -34,8 +36,9 @@ void game() {
   rotate(radians(da));
   stroke(0);
   fill(255);
-  rect(20, 0, 100, 20);
-  ellipse(0, 0, 100, 70);
+  rect(20, 0, 100, 20);//gun
+  fill(c);
+  ellipse(0, 0, 100, 70);//body
   fill(255, 0, 0);
   circle(30, 10, 15);
   circle(30, -10, 15);
@@ -99,6 +102,18 @@ void game() {
   if (lives == 0){
     mode = gameover;
   }
+  
+  if (dx < 0 || dx > 1000 || dy < 0 || dy > 1000){
+    lives = lives - 1;
+    dx = 500;
+    dy = 500;
+  }
+  
+  
+  
+  
+  
+  
 }
 
 

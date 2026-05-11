@@ -1,3 +1,6 @@
+
+PImage city;
+
 int mode;
 
 color c;
@@ -18,8 +21,13 @@ int ba = 0;
 
 int score;
 int lives;
+int highscore = 0;
+
+int sx = 500;
 
 void setup(){
+  
+  //city = loadImage("city");
   
   size(1000, 1000);
   mode = intro;
